@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Seller.destroy_all
+
 categories = [
   'Jewelry & Accessories',
   'Clothing & Shoes',
@@ -21,20 +23,20 @@ categories = [
   )
 
   7.times do
-    num_categories = rand(0..categories.length - 1);
+    num_categories = rand(1..categories.length - 1);
     Buyer.create(
       name: Faker::Name.name,
-      max_price: rand(10..1200),
+      max_price: rand(10.00..1200.00).round(2),
       categories: categories.sample(num_categories),
       seller_id: s.id
     )
   end
   
-  10.times do
-    price = rand(10..1000)
+  15.times do
+    price = rand(10.00..1000.00).round(2)
     p = Product.create(
       price: price,
-      description: Faker::Movie.quote,
+      description: Faker::House.furniture,
       category: categories.sample,
       seller_id: s.id
   )
