@@ -27,11 +27,30 @@ const Products = (props) => {
     getSellerProducts()
   }, [])
 
+  const normalizeData = (data)=>{
+    let ids = data.map(t => t.seller_id)
+    let uniqueIds = [... new Set(ids)]
+
+    let normalizedData = uniqueIds.map(id =>{
+      let products = data.filter(d=>d.seller_id === id)
+      let filterProducts = products.map(p=>{
+        return {key: p.id, description: p.description, price: "$" + p.price.toFixed(2), category: p.category}
+      })
+      return {
+        name: products[0].name,
+        email: products[0].email,
+        products: filterProducts
+      }
+    })
+    return normalizedData;
+  };
+
   const getSellerProducts = async () => {
     try {
       let res = await axios.get('/api/products')
       console.log(res.data)
-      setSellerProducts(res.data)
+      let normalizedData = normalizeData(res.data)
+      setSellerProducts(normalizedData)
     } catch (error) {
       alert('error occurred getSellerProducts')
     }
