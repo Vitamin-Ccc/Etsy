@@ -3,8 +3,8 @@ import React from "react";
 
 const { Meta } = Card;
 
-const ProductCard = (props) => {
-  const { price, description, name } = props
+const BuyerProductCard = (props) => {
+  const { price, description, seller_name } = props
 
   return (
     <Card
@@ -18,10 +18,10 @@ const ProductCard = (props) => {
     >
       <Meta
         title={`$${price}`}
-        description={`Seller: ${name}`}
+        description={`Seller: ${seller_name}`}
       />
     </Card>
   )
 }
 
-export default ProductCard;
+export default BuyerProductCard;
