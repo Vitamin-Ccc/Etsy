@@ -9,7 +9,7 @@ class Api::ProductsController < ApplicationController
   end
 
   def category
-    render json: Product.by_category(params[:city])
+    render json: Product.by_category(params[:category])
   end
 
 end
