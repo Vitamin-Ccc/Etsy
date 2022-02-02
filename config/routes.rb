@@ -5,5 +5,8 @@ Rails.application.routes.draw do
     get "products", to: "products#index"
     get "categories", to: "products#get_categories"
     get "categories/:category", to: "products#category"
+    resources :sellers, only: [:index, :show]
+    resources :buyers, only: [:show]
+
   end
 end
