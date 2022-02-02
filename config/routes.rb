@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   namespace :api do
     # Don't define route if we don't plan to use it.
     get "products", to: "products#index"
+    get "categories", to: "products#get_categories"
+    get "categories/:category", to: "products#category"
   end
 end

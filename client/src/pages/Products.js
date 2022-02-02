@@ -20,7 +20,7 @@ const columns = [
   },
 ];
 
-const Products = (props) => {
+const Products = () => {
   const [sellerProducts, setSellerProducts] = useState([]);
 
   useEffect(() => {

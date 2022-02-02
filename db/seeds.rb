@@ -9,10 +9,10 @@
 Seller.destroy_all
 
 categories = [
-  'Jewelry & Accessories',
-  'Clothing & Shoes',
-  'Home & Living',
-  'Toys & Entertainment',
+  'Accessories',
+  'Clothing',
+  'Home',
+  'Entertainment',
   'Beauty',
 ]
 
