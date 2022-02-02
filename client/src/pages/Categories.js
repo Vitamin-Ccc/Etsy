@@ -18,19 +18,16 @@ const Categories = () => {
       let res = await axios.get('/api/categories')
       setCategories(res.data)
     } catch (err) {
-      setCategories(['Accessories',
-        'Clothing',
-        'Home',
-        'Entertainment',
-        'Beauty'])
+      alert('error in getCategories')
     }
   }
 
   const onChange = async (value) => {
     console.log(`selected ${value}`);
     try {
-      let res = await axios.get(`/api/categories/${value.toLowerCase()}`)
       setCategory(value)
+      let res = await axios.get(`/api/categories/${value}`)
+      console.log(res.data.category)
       setCategoryProducts(res.data)
     } catch (err) {
       console.log(err)

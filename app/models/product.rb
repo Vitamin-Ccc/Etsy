@@ -22,7 +22,7 @@ class Product < ApplicationRecord
   def self.by_category(category)
     select('products.id, price, description, category, s.id as seller_id, s.name, s.email')
     .joins('INNER JOIN sellers as s ON s.id = products.seller_id')
-    .order('category')
+    .where('products.category = ?', category)
   end
 
 
