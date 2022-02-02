@@ -48,7 +48,6 @@ const Products = () => {
   const getSellerProducts = async () => {
     try {
       let res = await axios.get('/api/products')
-      console.log(res.data)
       let normalizedData = normalizeData(res.data)
       setSellerProducts(normalizedData)
     } catch (error) {

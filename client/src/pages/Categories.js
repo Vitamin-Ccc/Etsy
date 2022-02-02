@@ -23,19 +23,13 @@ const Categories = () => {
   }
 
   const onChange = async (value) => {
-    console.log(`selected ${value}`);
     try {
       setCategory(value)
       let res = await axios.get(`/api/categories/${value}`)
-      console.log(res.data.category)
       setCategoryProducts(res.data)
     } catch (err) {
-      console.log(err)
+      alert('error in onChange')
     }
-  }
-
-  const onSearch = (val) => {
-    console.log('search:', val);
   }
 
   const renderSelect = () => {
@@ -52,7 +46,6 @@ const Categories = () => {
           placeholder="Select a category"
           optionFilterProp="children"
           onChange={onChange}
-          onSearch={onSearch}
           filterOption={(input, option) =>
             option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
           }
@@ -64,7 +57,6 @@ const Categories = () => {
   }
 
   const renderCategory = () => {
-    console.log("categoryProducts", categoryProducts)
     if (!categoryProducts) {
       return <p>Select a category</p>
     }
